@@ -1,0 +1,408 @@
+{% load custom_filters %}
+
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  * {
+    box-sizing: border-box;
+  
+  }
+
+  body{
+      background: url(http://wrbbradio.org/wp-content/uploads/2016/10/grey-background-07.jpg) no-repeat center fixed;
+      background-size: cover;
+      background-image: url('https://wallpaperset.com/w/full/f/1/b/121845.jpg');
+      background-size: cover;
+    }
+
+    body {
+    font-family: "Lato", sans-serif;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #0e0d0d;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav b {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 35px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  #mySearch {
+    width: 100%;
+    font-size: 18px;
+    padding: 11px;
+    border: 1px solid #ddd;
+  }
+  
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  
+  body {
+    background-color: #f70e0e;
+    padding: 20px;
+    font-family: Arial;
+  }
+  
+  /* Center website */
+  .main {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  h1 {
+    font-size: 50px;
+    word-break: break-all;
+  }
+  
+  .row {
+    margin: 10px -16px;
+  }
+  
+  /* Add padding BETWEEN each column */
+  .row,
+  .row > .column {
+    padding: 15px;
+  }
+  
+  /* Create three equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 33.33%;
+    display: none; /* Hide all elements by default */
+  }
+  
+  /* Clear floats after rows */ 
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Content */
+  .content {
+    background-color: rgb(226, 223, 6);
+    padding: 10px;
+  }
+  
+  
+  /* The "show" class is added to the filtered elements */
+  .show {
+    display: block;
+  }
+  
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: rgb(221, 182, 6);
+    cursor: pointer;
+  }
+  
+  .but1 {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+audio {
+  width: 100%;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #333;
+  color: #fff;
+}
+
+audio::-webkit-media-controls {
+  width: 100%;
+}
+
+audio::-webkit-media-controls-play-button {
+  font-size: 1em;
+  color: #e6d7d7;
+}
+
+audio::-webkit-media-controls-volume-slider {
+  -webkit-appearance: none;
+  height: 0em;
+  width: 100%;
+  background-color: #08d692;
+
+}
+
+
+
+.topleft {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+}
+
+  .btn:hover {
+    background-color: #cbd80e;
+  }
+  
+  .btn.active {
+    background-color: #0d1ac7;
+    color: rgb(244, 244, 248);
+  }
+  </style>
+  </head>
+  <body >
+  
+  <!-- MAIN (Center website) -->
+  <div class="main">
+    <br>
+  
+  <h1 align="center" style="color:rgb(37, 12, 175);">MUSIFY</h1>
+  <hr>
+  
+  <h2 ALIGN="CENTER">WELCOME!!!</h2>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <h1><b>  Menu</b></h1>
+      <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+    <ul id="myMenu">
+        <li><a href="music">HOME</a></li>
+        <li><a href="artist">ARTIST</a></li>
+        <li><a href="genre">GENRE</a></li>
+        <li><a href="mood">MOOD</a></li>
+        <li><a href="movie">MOVIE</a></li>
+        <li><a href="language">LANGUAGE</a></li>
+
+        
+      </ul>
+  </div>
+  <span class="topleft" style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+
+
+  <div ></div>
+    
+  
+<!--
+  <script>
+    function data1(a){
+      var myData = JSON.parse('{{ my_data|safe }}');
+      var dataDiv = document.getElementById('my-data');
+      var dataItem = document.createElement('p');
+      var dataText = document.createTextNode(myData[a]);
+      return myData[a];
+    }
+  </script>
+-->
+  <!-- Portfolio Gallery Grid
+  {% for image_url in image_urls %}
+    <img src="{{ image_url }}" alt="Image">
+{% endfor %} -->
+
+
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+  
+
+<div class="row" >
+    <div class="column cars">
+      <br><br><br>
+      <div class="content">
+        <img src="https://images.unsplash.com/photo-1546708770-589dab7b22c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cm9jayUyMG11c2ljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Mountains" style="width:100%">
+        <h4>ROCK</h4>
+        <div id="my-data"></div>
+        <a class="but1" href="rock">EXPLORE</a>
+      </div>
+    </div>
+
+    <div class="row" >
+      <div class="column cars">
+        <br><br>
+        <div class="content">
+          <img src="https://images.unsplash.com/photo-1620577610365-86c411bad78d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHJvY2slMjBtdXNpY3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Mountains" style="width:100%">
+          <h4>POP</h4>
+          <div id="my-data"></div>
+          <a class="but1" href="pop">EXPLORE</a>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="column cars">
+          <div class="content">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9wJTIwbXVzaWN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="Mountains" style="width:100%">
+            <h4>HIP-HOP</h4>
+            <div id="my-data"></div>
+            <a class="but1" href="hiphop">EXPLORE</a>
+          </div>
+        </div>
+
+        <div class="row" >
+          <div class="column cars">
+            <div class="content">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPhE4_Hf9LLoU_AB6mPs6Un0sd4PK8V5Fqg&usqp=CAU" alt="Mountains" style="width:100%">
+              <h4>CLASSICAL</h4>
+              <div id="my-data"></div>
+              <a class="but1" href="classical">EXPLORE</a>
+            </div>
+          </div>
+      
+          <div class="row" >
+            <div class="column cars">
+              <div class="content">
+                <img src="https://media.istockphoto.com/id/1440928645/photo/concert-view-of-saxophonist-a-saxophone-sax-player-with-vocalist-and-musical-band-during-jazz.jpg?b=1&s=170667a&w=0&k=20&c=4rwLexfBCJ7oQpk8WWjB1O8k5f3d-TjH2gQ1UWp2Sp0=" alt="Mountains" style="width:100%">
+                <h4>JAZZ</h4>
+                <div id="my-data"></div>
+                <a class="but1" href="jazz">EXPLORE</a>
+              </div>
+            </div>
+  
+
+            <div class="row" >
+              <div class="column cars">
+                <div class="content">
+                  <img src="https://media.istockphoto.com/id/801847666/photo/playing-acoustic-guitar-close-up.jpg?s=612x612&w=0&k=20&c=6SSgvEMQ2kJ_ieF73MRkTzB54Q62UklqZm6dVqts3Ho=" alt="Mountains" style="width:100%">
+                  <h4>FOLK</h4>
+                  <div id="my-data"></div>
+                  <a class="but1" href="folk">EXPLORE</a>
+                </div>
+              </div>
+
+
+
+
+  <!-- END GRID -->
+  </div>
+    
+  <!-- END MAIN -->
+  </div>
+  
+  <script>
+  filterSelection("all")
+  function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("column");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+      w3RemoveClass(x[i], "show");
+      if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    }
+  }
+  
+  function w3AddClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+    }
+  }
+  
+  function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);     
+      }
+    }
+    element.className = arr1.join(" ");
+  }
+  
+  
+  // Add active class to the current button (highlight it)
+  var btnContainer = document.getElementById("myBtnContainer");
+  var btns = btnContainer.getElementsByClassName("btn");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function(){
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
+  </script>
+  
+  <script>
+    function myFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("mySearch");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("myMenu");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+    </script>
+
+  </body>
+  </html>
+  

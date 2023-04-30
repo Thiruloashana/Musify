@@ -1,0 +1,96 @@
+<html>
+  <head>
+    
+    <meta charset="utf-8">
+    <title>Form</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    body{
+      background: url('http://wrbbradio.org/wp-content/uploads/2016/10/grey-background-07.jpg') no-repeat center fixed;
+      background-size: cover;
+      /*background-image: url('https://wallpaperset.com/w/full/f/6/d/121717.jpg');*/
+      /*background-image: url('https://wallpaperset.com/w/full/f/1/b/121845.jpg');*/
+     /* background-image: url('https://wallpaperset.com/w/full/9/2/a/121794.jpg');*/
+      background-image: url('https://wallpaperset.com/w/full/f/7/1/121952.jpg');
+      /*https://wallpaperset.com/w/full/0/3/5/121911.jpg*/
+      /*https://wallpaperset.com/w/full/1/3/b/309892.jpg*/
+      /*https://wallpaperset.com/w/full/5/5/0/309894.jpg*/
+      /*https://wallpaperset.com/w/full/9/b/a/309901.jpg*/
+      /*https://wallpaperset.com/w/full/b/4/c/309918.jpg*/
+
+
+      background-size: cover;
+    }
+    
+    .container{
+        background: #7c623879;
+        width: 500px;
+        height: 350px;
+        padding-bottom: 20px;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: auto;
+      padding: 70px 50px 20px 50px;
+    }
+    
+    
+    .button1{
+        
+        left: 200%;
+        transform: translate(140%, -100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: burlywood;
+        color: rgba(11, 11, 14, 0.555);
+        width: 130px;
+        height: 45px;
+        background: #f0eef5;
+        text-transform: uppercase;
+      cursor: pointer;
+    }
+    
+    
+    </style>
+  </head>
+  
+  <body>
+    <!-- Body of Form starts -->
+  	<div class="container">
+      <form method="post" autocomplete="on">
+        {% csrf_token %}
+
+        <br><br><br><br><br>
+
+        <div align="center" class="button1">
+              <button type="submit"><a href="signin">SIGNIN</button>                
+        </div>
+
+      <br><br><br><br><br><br>
+      
+      <div align="center" class="button1">
+            <button type="submit" ><a href="register">REGISTER</button>
+      </div>
+        
+      </form>
+  </div>
+  <!--Body of Form ends--->
+  </body>
+
+
+</html>
+
+
+
+
+
+
+
+
